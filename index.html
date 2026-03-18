@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jake Brecknock | Portfolio</title>
+    <meta
+      name="description"
+      content="Jake Brecknock - Computer Science student building thoughtful, practical, and interactive software."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-bg">
+      <div class="gradient gradient-1"></div>
+      <div class="gradient gradient-2"></div>
+      <div class="grid-overlay"></div>
+      <div class="noise"></div>
+      <div class="cursor-glow" id="cursorGlow"></div>
+    </div>
+
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button class="brand" data-scroll="home" aria-label="Go to top">
+          <span class="brand-dot"></span>
+          <span>Jake Brecknock</span>
+        </button>
+
+        <nav class="nav desktop-nav">
+          <button class="nav-link active" data-scroll="about">About</button>
+          <button class="nav-link" data-scroll="projects">Projects</button>
+          <button class="nav-link" data-scroll="classes">Classes</button>
+          <button class="nav-link" data-scroll="links">Links</button>
+          <button class="nav-link" data-scroll="contact">Contact</button>
+        </nav>
+
+        <div class="topbar-actions">
+          <button class="command-trigger" id="commandTrigger">Quick Nav</button>
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            Menu
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-link" data-scroll="about">About</button>
+        <button class="mobile-link" data-scroll="projects">Projects</button>
+        <button class="mobile-link" data-scroll="classes">Classes</button>
+        <button class="mobile-link" data-scroll="links">Links</button>
+        <button class="mobile-link" data-scroll="contact">Contact</button>
+      </div>
+    </header>
+
+    <div class="command-palette hidden" id="commandPalette">
+      <div class="command-backdrop" id="commandBackdrop"></div>
+      <div class="command-modal">
+        <div class="command-header">
+          <span>Quick navigation</span>
+          <span class="command-hint">esc</span>
+        </div>
+        <div class="command-list">
+          <button class="command-item" data-scroll="about">Go to About</button>
+          <button class="command-item" data-scroll="projects">Go to Projects</button>
+          <button class="command-item" data-scroll="classes">Go to Classes</button>
+          <button class="command-item" data-scroll="links">Go to Links</button>
+          <button class="command-item" data-scroll="contact">Go to Contact</button>
+          <a class="command-item as-link" href="https://github.com/jakebrecknock" target="_blank" rel="noreferrer">Open GitHub</a>
+          <a class="command-item as-link" href="https://www.linkedin.com/in/jake-brecknock" target="_blank" rel="noreferrer">Open LinkedIn</a>
+          <a class="command-item as-link" href="resume.pdf" target="_blank" rel="noreferrer">Open Resume</a>
+        </div>
+      </div>
+    </div>
+
+    <main id="home">
+      <section class="hero section">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">Computer Science · Systems · Software · Engineering</div>
+          <h1>
+            Professional,
+            <span>interactive,</span>
+            and built
+            <span>to stand out.</span>
+          </h1>
+          <p class="hero-text">
+            I’m Jake Brecknock — a Computer Science student at Grinnell College in the
+            3-2 electrical engineering program. I like building software that is useful,
+            well-designed, and grounded in real-world problems.
+          </p>
+
+          <div class="typed-panel">
+            <div class="typed-label">live status</div>
+            <div class="typed-line">
+              <span id="typedText"></span><span class="cursor">|</span>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <button class="btn btn-primary" data-scroll="projects">Explore Work</button>
+            <a class="btn btn-secondary" href="resume.pdf" target="_blank" rel="noreferrer">Resume PDF</a>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal">
+          <div class="panel-card spotlight-card">
+            <div class="panel-top">
+              <span class="panel-label">Snapshot</span>
+              <span class="panel-badge">2026 draft</span>
+            </div>
+            <div class="snapshot-grid">
+              <div class="snapshot-item">Grinnell College</div>
+              <div class="snapshot-item">Computer Science</div>
+              <div class="snapshot-item">3-2 Electrical Engineering</div>
+              <div class="snapshot-item">NCAA Student-Athlete</div>
+              <div class="snapshot-item">Residential Assistant</div>
+              <div class="snapshot-item">Builder of real-world tools</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="section-heading reveal">
+          <div class="section-kicker">About</div>
+          <h2>Who I am</h2>
+        </div>
+
+        <div class="two-col">
+          <div class="glass-card spotlight-card reveal">
+            <p>
+              I’m currently pursuing a B.A. in Computer Science at Grinnell College and
+              a B.S. in Electrical Engineering through the 3-2 engineering program. I’m
+              especially interested in software, systems, and tools that solve practical
+              problems cleanly and effectively.
+            </p>
+            <p>
+              A lot of my best work has come from building things people actually use:
+              live estimate software, warehouse tracking systems, and operational tools
+              that improve speed and clarity. I care about product quality, technical
+              depth, and making software feel intuitive.
+            </p>
+          </div>
+
+          <div class="glass-card spotlight-card reveal">
+            <div class="fact-list">
+              <div class="fact-row">
+                <span>School</span>
+                <strong>Grinnell College</strong>
+              </div>
+              <div class="fact-row">
+                <span>Programs</span>
+                <strong>Computer Science + 3-2 EE</strong>
+              </div>
+              <div class="fact-row">
+                <span>Leadership</span>
+                <strong>RA + Co-founder, Student Outreach</strong>
+              </div>
+              <div class="fact-row">
+                <span>Background</span>
+                <strong>Software, operations, robotics</strong>
+              </div>
+              <div class="fact-row">
+                <span>Languages</span>
+                <strong>C, JavaScript, Java, R</strong>
+              </div>
+              <div class="fact-row">
+                <span>Interests</span>
+                <strong>Systems, engineering, product-minded software</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section-heading reveal">
+          <div class="section-kicker">Projects</div>
+          <h2>Work I’ve built</h2>
+        </div>
+
+        <div class="projects-shell">
+          <div class="project-tabs reveal">
+            <button class="project-tab active" data-project="0">
+              <span class="tab-type">Professional Project</span>
+              <span class="tab-title">ACE Live Estimate Platform</span>
+            </button>
+            <button class="project-tab" data-project="1">
+              <span class="tab-type">Professional Project</span>
+              <span class="tab-title">Warehouse Checkout System</span>
+            </button>
+            <button class="project-tab" data-project="2">
+              <span class="tab-type">Professional Experience</span>
+              <span class="tab-title">Tapster Robotics Assembly</span>
+            </button>
+            <button class="project-tab" data-project="3">
+              <span class="tab-type">Leadership / Initiative</span>
+              <span class="tab-title">Grinnell Student Outreach Club</span>
+            </button>
+          </div>
+
+          <div class="project-view glass-card spotlight-card reveal">
+            <div class="project-meta">
+              <span id="projectType">Professional Project</span>
+              <span id="projectYear">2025</span>
+            </div>
+            <h3 id="projectTitle">ACE Live Estimate Platform</h3>
+            <p id="projectDescription">
+              Created and implemented a JavaScript website for ACE Handyman Services that
+              produces and stores live estimates for the field manager and craftsmen.
+            </p>
+
+            <div class="tag-row" id="projectTags"></div>
+
+            <div class="impact-box">
+              <div class="impact-label">Why it matters</div>
+              <p id="projectImpact">
+                This tool created a real competitive differentiator by making estimates
+                faster, easier, and available in real time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="classes" class="section">
+        <div class="section-heading reveal">
+          <div class="section-kicker">Classes</div>
+          <h2>CS + STEM coursework</h2>
+        </div>
+
+        <div class="classes-grid">
+          <article class="class-card glass-card spotlight-card reveal">
+            <div class="class-head">
+              <span>CSC 151</span>
+              <button class="class-toggle">Open</button>
+            </div>
+            <h3>Functional Problem Solving</h3>
+            <div class="class-body">
+              <p>Placeholder section for course projects, key concepts, and notable assignments.</p>
+            </div>
+          </article>
+
+          <article class="class-card glass-card spotlight-card reveal">
+            <div class="class-head">
+              <span>CSC 161</span>
+              <button class="class-toggle">Open</button>
+            </div>
+            <h3>Imperative Problem Solving</h3>
+            <div class="class-body">
+              <p>Placeholder section for course projects, key concepts, and notable assignments.</p>
+            </div>
+          </article>
+
+          <article class="class-card glass-card spotlight-card reveal">
+            <div class="class-head">
+              <span>CSC 207</span>
+              <button class="class-toggle">Open</button>
+            </div>
+            <h3>Object-Oriented Problem Solving, Data Structures, and Algorithms</h3>
+            <div class="class-body">
+              <p>Placeholder section for course projects, key concepts, and notable assignments.</p>
+            </div>
+          </article>
+
+          <article class="class-card glass-card spotlight-card reveal">
+            <div class="class-head">
+              <span>CSC 211</span>
+              <button class="class-toggle">Open</button>
+            </div>
+            <h3>Computer Organization</h3>
+            <div class="class-body">
+              <p>Placeholder section for course projects, key concepts, and notable assignments.</p>
+            </div>
+          </article>
+
+          <article class="class-card glass-card spotlight-card reveal">
+            <div class="class-head">
+              <span>MAT 215</span>
+              <button class="class-toggle">Open</button>
+            </div>
+            <h3>Applied Calculus / STEM Coursework</h3>
+            <div class="class-body">
+              <p>Placeholder section for course projects, key concepts, and notable assignments.</p>
+            </div>
+          </article>
+
+          <article class="class-card glass-card spotlight-card reveal">
+            <div class="class-head">
+              <span>PHY 131</span>
+              <button class="class-toggle">Open</button>
+            </div>
+            <h3>Introductory Physics I</h3>
+            <div class="class-body">
+              <p>Placeholder section for labs, problem-solving, and major concepts.</p>
+            </div>
+          </article>
+
+          <article class="class-card glass-card spotlight-card reveal">
+            <div class="class-head">
+              <span>PHY 132</span>
+              <button class="class-toggle">Open</button>
+            </div>
+            <h3>Electricity and Magnetism</h3>
+            <div class="class-body">
+              <p>Placeholder section for labs, problem-solving, and major concepts.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="links" class="section">
+        <div class="section-heading reveal">
+          <div class="section-kicker">Links</div>
+          <h2>Professional presence</h2>
+        </div>
+
+        <div class="links-grid">
+          <a class="link-card glass-card spotlight-card reveal" href="https://github.com/jakebrecknock" target="_blank" rel="noreferrer">
+            <div class="link-top">
+              <h3>GitHub</h3>
+              <span>↗</span>
+            </div>
+            <p>Code, repositories, experiments, and technical work.</p>
+          </a>
+
+          <a class="link-card glass-card spotlight-card reveal" href="https://www.linkedin.com/in/jake-brecknock" target="_blank" rel="noreferrer">
+            <div class="link-top">
+              <h3>LinkedIn</h3>
+              <span>↗</span>
+            </div>
+            <p>Experience, background, and professional profile.</p>
+          </a>
+
+          <a class="link-card glass-card spotlight-card reveal" href="resume.pdf" target="_blank" rel="noreferrer">
+            <div class="link-top">
+              <h3>Resume PDF</h3>
+              <span>↗</span>
+            </div>
+            <p>Drop your final resume PDF into the repo as <strong>resume.pdf</strong>.</p>
+          </a>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="section-heading reveal">
+          <div class="section-kicker">Contact</div>
+          <h2>What I’m aiming for</h2>
+        </div>
+
+        <div class="two-col">
+          <div class="glass-card spotlight-card reveal">
+            <p>
+              I’m drawn to work where strong thinking, real responsibility, and useful
+              software all matter. I want to keep building systems that are technically
+              sharp, practical, and genuinely valuable.
+            </p>
+
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="mailto:jakebrecknock@icloud.com">Email Me</a>
+              <a class="btn btn-secondary" href="https://github.com/jakebrecknock" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </div>
+
+          <div class="glass-card spotlight-card reveal">
+            <div class="fact-list">
+              <div class="fact-row">
+                <span>Email</span>
+                <strong>jakebrecknock@icloud.com</strong>
+              </div>
+              <div class="fact-row">
+                <span>Phone</span>
+                <strong>(708) 378-3477</strong>
+              </div>
+              <div class="fact-row">
+                <span>LinkedIn</span>
+                <strong>linkedin.com/in/jake-brecknock</strong>
+              </div>
+              <div class="fact-row">
+                <span>GitHub</span>
+                <strong>github.com/jakebrecknock</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
