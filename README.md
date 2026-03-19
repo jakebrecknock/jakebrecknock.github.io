@@ -3,7 +3,7 @@
 This is my personal portfolio website, built to showcase my work, projects, and background as a Computer Science student at Grinnell College.
 
 ## 🔗 Live Site
-[jakebrecknock.com](https://jakebrecknock.com)
+[jakebrecknock.com](http://jakebrecknock.com)
 
 ---
 
