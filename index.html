@@ -6,8 +6,8 @@
   <title>Jake Brecknock</title>
   <meta name="description" content="Jake Brecknock: computer science and electrical engineering student at Grinnell College. Projects, experience, coursework, and resume." />
   <meta name="theme-color" content="#1A1D20" />
-  <link rel="preload" href="fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="fonts/ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23DE6F6F%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-family=%27monospace%27 font-weight=%27700%27 font-size=%2716%27 text-anchor=%27middle%27 fill=%27%231A1D20%27%3EJB%3C/text%3E%3C/svg%3E" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -37,7 +37,7 @@
         <li><a href="#resume" data-key="5"><kbd>5</kbd>Resume</a></li>
         <li><a href="#contact" data-key="6"><kbd>6</kbd>Contact</a></li>
       </ol>
-      <p class="rail-hint">Keys <kbd>1</kbd>–<kbd>6</kbd> jump. <kbd>/</kbd> opens the shell.</p>
+      <p class="rail-hint">Keys <kbd>1</kbd>–<kbd>6</kbd> jump. <kbd>/</kbd> opens the terminal.</p>
     </nav>
 
     <main id="main">
@@ -55,29 +55,22 @@
           </p>
         </div>
 
-        <figure class="portrait">
-          <div class="portrait-img">
-            <img src="jake-27.jpg" alt="Jake Brecknock (#27) with a Grinnell teammate, holding the 2026 Midwest Conference men's soccer tournament winner plaque" width="1600" height="1066" />
-          </div>
-          <figcaption>I'm the one on the right.</figcaption>
-        </figure>
-
         <div class="terminal" id="terminal" aria-label="Interactive terminal">
           <div class="term-bar">
             <span class="term-title">jake@grinnell: ~</span>
-            <span class="term-tip">type <code>help</code> or tap a command</span>
+            <span class="term-tip">click a command or type one</span>
           </div>
-          <div class="term-body" id="termBody" role="log" aria-live="polite" tabindex="0"></div>
+          <div class="term-body" id="termBody" role="log" aria-live="polite"></div>
           <form class="term-input" id="termForm" autocomplete="off">
             <label for="termInput" class="prompt"><span class="p-user">jake@grinnell</span>:<span class="p-path">~</span>$</label>
-            <input id="termInput" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command" />
+            <input id="termInput" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="go" placeholder="try: projects" aria-label="Terminal command" />
+            <button type="submit" class="term-run">Run</button>
           </form>
           <div class="term-quick" aria-label="Quick commands">
             <button type="button" data-cmd="help">help</button>
-            <button type="button" data-cmd="whoami">whoami</button>
             <button type="button" data-cmd="projects">projects</button>
+            <button type="button" data-cmd="experience">experience</button>
             <button type="button" data-cmd="courses">courses</button>
-            <button type="button" data-cmd="resume">resume</button>
             <button type="button" data-cmd="contact">contact</button>
           </div>
         </div>
@@ -107,20 +100,22 @@
               St. Louis. I like problems where good software makes someone's day measurably faster.
             </p>
             <p>
+              Before Grinnell I went to Fenwick High School in Oak Park, where I was a Lawless
+              Scholar, a National Merit semifinalist, and part of WYSE. On the math team I placed
+              6th in Illinois individually, and our team finished first.
+            </p>
+            <p>
               I'm from Chicago and split my time between there and Melbourne. Outside of class and
-              work I read a lot and play golf, still chasing a round under 80.
+              work I read a lot and play golf.
             </p>
           </div>
 
-          <dl class="spec" aria-label="Datasheet">
-            <div><dt>School</dt><dd>Grinnell College, class of 2027</dd></div>
-            <div><dt>Degrees</dt><dd>B.A. Computer Science<br />B.S. Electrical Engineering (3-2)</dd></div>
-            <div><dt>Athletics</dt><dd>NCAA soccer</dd></div>
-            <div><dt>Based</dt><dd>Chicago, IL / Grinnell, IA</dd></div>
-            <div><dt>High school</dt><dd>Fenwick, Oak Park IL, 2024. Lawless Scholar, National Merit semifinalist, 1500 SAT, 35 ACT</dd></div>
-            <div><dt>Math team</dt><dd>6th in Illinois individually, 1st as a team</dd></div>
-            <div><dt>Also</dt><dd>WYSE (Worldwide Youth in Science and Engineering)</dd></div>
-          </dl>
+          <figure class="portrait">
+            <div class="portrait-img" title="Tap for color">
+              <img src="jake-27.jpg" alt="Jake Brecknock, number 27, with a Grinnell teammate after a soccer game" width="1600" height="1066" loading="lazy" decoding="async" />
+            </div>
+            <figcaption>Me on the right, in 27. Same number as my graduating class.</figcaption>
+          </figure>
         </div>
 
         <div class="skills">

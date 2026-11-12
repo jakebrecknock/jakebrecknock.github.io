@@ -308,6 +308,22 @@ $("#courseFilters").addEventListener("click", (e) => {
 });
 filterCourses("all");
 
+/* ---------------- name: always fits its column ---------------- */
+const nameplate = $(".nameplate");
+function fitName() {
+  nameplate.style.fontSize = "";
+  const avail = nameplate.clientWidth;
+  const widest = Math.max(...$$("span", nameplate).map((s) => s.scrollWidth));
+  if (widest > avail && avail > 0) {
+    const size = parseFloat(getComputedStyle(nameplate).fontSize);
+    nameplate.style.fontSize = Math.floor(size * (avail / widest) * 0.98) + "px";
+  }
+}
+let fitRaf;
+window.addEventListener("resize", () => { cancelAnimationFrame(fitRaf); fitRaf = requestAnimationFrame(fitName); });
+fitName();
+if (document.fonts) document.fonts.ready.then(fitName);
+
 /* ---------------- photo: tap to show color (no hover on phones) ---------------- */
 $(".portrait-img").addEventListener("click", () => $(".portrait").classList.toggle("is-color"));
 
@@ -384,18 +400,23 @@ function print(html, cls = "") {
 }
 const gap = () => { const d = document.createElement("div"); d.className = "t-gap"; termBody.appendChild(d); };
 const row = (k, v) => print(`<span>${k}</span><span>${v}</span>`, "t-row");
+const runBtn = (cmd, label = cmd) => `<button type="button" class="t-run" data-cmd="${esc(cmd)}">${esc(label)}</button>`;
+const menu = (cmds) => print(cmds.map((c) => runBtn(c)).join(""), "t-menu");
 const link = (href, label, ext = true) => `<a href="${href}"${ext ? ' target="_blank" rel="noopener"' : ""}>${esc(label)}</a>`;
 
 const COMMANDS = {
   help: {
     desc: "list commands",
     run() {
-      print("Available commands:", "t-dim");
+      print("Click a command to run it, or type it and press Enter.", "t-dim");
+      gap();
       Object.entries(COMMANDS).forEach(([name, c]) => {
-        if (!c.hidden) row(name, esc(c.desc) + (c.args ? ` <span class="t-dim">${esc(name + " " + c.args)}</span>` : ""));
+        if (c.hidden) return;
+        const usage = c.args ? ` <span class="t-dim">${esc(name + " " + c.args)}</span>` : "";
+        print(`${runBtn(name)}<span>${esc(c.desc)}${usage}</span>`, "t-row");
       });
       gap();
-      print("Tip: <span class='t-hi'>Tab</span> completes, <span class='t-hi'>↑ ↓</span> walk history.", "t-dim");
+      print("Tip: Tab completes a command, and the up/down arrows bring back earlier ones.", "t-dim");
     }
   },
   whoami: {
@@ -416,7 +437,7 @@ const COMMANDS = {
       row("2025  ACE", "Software Development Intern");
       row("2024  Tapster", "Robotics Assembly Team");
       gap();
-      print(`Details: ${link("#experience", "~/experience", false)}`, "t-dim");
+      print(`Full details: ${runBtn("cd experience", "~/experience")}`, "t-dim");
     }
   },
   projects: {
@@ -431,9 +452,9 @@ const COMMANDS = {
         goTo("projects");
         return print(`Opened ${esc(PROJECTS[i].name)}`, "t-ok");
       }
-      PROJECTS.forEach((p) => row(p.id, `${esc(p.name)} <span class="t-dim">(${esc(p.when)})</span>`));
+      PROJECTS.forEach((p) => print(`${runBtn("projects " + p.id, p.id)}<span>${esc(p.name)} <span class="t-dim">(${esc(p.when)})</span></span>`, "t-row"));
       gap();
-      print("Open one with <span class='t-hi'>projects sqrl</span> (or any id above).", "t-dim");
+      print("Click an id to open that project, or type <span class='t-hi'>projects sqrl</span>.", "t-dim");
     }
   },
   courses: {
@@ -444,9 +465,11 @@ const COMMANDS = {
       if (!["ALL", "CSC", "MAT", "PHY", "STA"].includes(dept)) return print(`Unknown department "${esc(args[0])}". Try csc, mat, phy, or sta.`, "t-err");
       const list = COURSES.filter((c) => dept === "ALL" || c.dept.split(" ").includes(dept));
       list.forEach((c) => row(c.label || c.code, esc(c.title)));
-      if (dept !== "ALL") { filterCourses(dept); print(`Filtered the course list to ${dept}.`, "t-dim"); }
+      filterCourses(dept);
       gap();
-      print(`Descriptions: ${link("#courses", "~/courses", false)}`, "t-dim");
+      if (dept === "ALL") print(`Filter by department: ${["csc", "mat", "phy", "sta"].map((d) => runBtn("courses " + d, d)).join(" ")}`, "t-dim");
+      else print(`Course list below is filtered to ${dept}. ${runBtn("courses", "show all")}`, "t-dim");
+      print(`Full descriptions: ${runBtn("cd courses", "~/courses")}`, "t-dim");
     }
   },
   skills: {
@@ -523,7 +546,6 @@ const COMMANDS = {
   clear: { desc: "clear the screen", run() { termBody.innerHTML = ""; } },
   date: { hidden: true, desc: "", run() { print(new Date().toLocaleString("en-US", { timeZone: "America/Chicago", dateStyle: "full", timeStyle: "short" }) + " CT"); } },
   pwd: { hidden: true, desc: "", run() { print("/home/jake"); } },
-  golf: { hidden: true, desc: "", run() { print("Current goal: break 80. Status: in progress.", "t-dim"); } },
   sudo: {
     hidden: true, desc: "",
     run(args) {
@@ -607,11 +629,15 @@ termInput.addEventListener("keydown", (e) => {
   }
 });
 
-// Clicking anywhere in the terminal body focuses the input (but not on links).
+// Clicking a command in the output runs it. Clicking empty space focuses the input
+// on desktop (not on phones, where it would pop the keyboard up).
+const finePointer = window.matchMedia("(pointer: fine)").matches;
 termBody.addEventListener("click", (e) => {
-  if (e.target.closest("a")) return;
+  const btn = e.target.closest(".t-run");
+  if (btn) { typeAndRun(btn.dataset.cmd); return; }
+  if (e.target.closest("a, button")) return;
   if (window.getSelection().toString()) return;
-  termInput.focus({ preventScroll: true });
+  if (finePointer) termInput.focus({ preventScroll: true });
 });
 
 // Quick command buttons type the command so people see what's happening.
@@ -640,12 +666,17 @@ function typeAndRun(cmd) {
     [ok("loading resume.pdf (updated Nov 2026)"), ""],
     [ok(`indexing ${PROJECTS.length} projects, ${COURSES.length} courses`), ""],
     ["", ""],
-    ["Welcome. Type <span class='t-hi'>help</span> or tap a command below.", ""]
+    ["Welcome. This is a working terminal. Click a command to run it:", ""]
   ];
-  if (reduceMotion) { lines.forEach(([t, c]) => (t ? print(t, c) : gap())); return; }
+  const finish = () => {
+    menu(["whoami", "projects", "experience", "courses", "skills", "resume", "contact", "help"]);
+    gap();
+    print("Or type one below and press Enter.", "t-dim");
+  };
+  if (reduceMotion) { lines.forEach(([t, c]) => (t ? print(t, c) : gap())); finish(); return; }
   let i = 0;
   const next = () => {
-    if (i >= lines.length) return;
+    if (i >= lines.length) { finish(); return; }
     const [t, c] = lines[i++];
     t ? print(t, c) : gap();
     setTimeout(next, i < 4 ? 160 : 220);
