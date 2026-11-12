@@ -1,389 +1,288 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jake Brecknock | Portfolio</title>
-    <meta
-      name="description"
-      content="Jake Brecknock - Computer Science student building thoughtful, practical, and interactive software."
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="site-bg">
-      <div class="gradient gradient-1"></div>
-      <div class="gradient gradient-2"></div>
-      <div class="grid-overlay"></div>
-      <div class="noise"></div>
-      <div class="cursor-glow" id="cursorGlow"></div>
-    </div>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jake Brecknock</title>
+  <meta name="description" content="Jake Brecknock: computer science and electrical engineering student at Grinnell College. Projects, experience, coursework, and resume." />
+  <meta name="theme-color" content="#1A1D20" />
+  <link rel="preload" href="fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/ibm-plex-mono-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23DE6F6F%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-family=%27monospace%27 font-weight=%27700%27 font-size=%2716%27 text-anchor=%27middle%27 fill=%27%231A1D20%27%3EJB%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
 
-    <header class="topbar">
-      <div class="topbar-inner">
-        <button class="brand" data-scroll="home" aria-label="Go to top">
-          <span class="brand-dot"></span>
-          <span>Jake Brecknock</span>
-        </button>
+  <header class="statusbar" role="banner">
+    <a class="sb-cell sb-id" href="#top" aria-label="Back to top">
+      <span class="led" aria-hidden="true"></span>JB&#8209;27
+    </a>
+    <span class="sb-cell sb-hide-sm">Grinnell, IA</span>
+    <span class="sb-cell" id="clock" aria-label="Local time in Central Time">--:--:-- CT</span>
+    <span class="sb-cell sb-grow sb-hide-sm" id="sbMsg">Ready. Press / to use the terminal.</span>
+    <button class="sb-cell sb-btn" id="themeToggle" type="button" aria-label="Switch color theme">
+      <span class="tt-label">Paper</span>
+    </button>
+    <a class="sb-cell sb-btn sb-strong" href="resume.pdf" target="_blank" rel="noopener">Resume.pdf</a>
+  </header>
 
-        <nav class="nav desktop-nav">
-          <button class="nav-link active" data-scroll="about">About</button>
-          <button class="nav-link" data-scroll="projects">Projects</button>
-          <button class="nav-link" data-scroll="classes">Classes</button>
-          <button class="nav-link" data-scroll="connect">Connect</button>
-        </nav>
+  <div class="frame" id="top">
+    <nav class="rail" aria-label="Sections">
+      <ol>
+        <li><a href="#about" data-key="1"><kbd>1</kbd>About</a></li>
+        <li><a href="#experience" data-key="2"><kbd>2</kbd>Experience</a></li>
+        <li><a href="#projects" data-key="3"><kbd>3</kbd>Projects</a></li>
+        <li><a href="#courses" data-key="4"><kbd>4</kbd>Courses</a></li>
+        <li><a href="#resume" data-key="5"><kbd>5</kbd>Resume</a></li>
+        <li><a href="#contact" data-key="6"><kbd>6</kbd>Contact</a></li>
+      </ol>
+      <p class="rail-hint">Keys <kbd>1</kbd>–<kbd>6</kbd> jump. <kbd>/</kbd> opens the shell.</p>
+    </nav>
 
-        <div class="topbar-actions">
-          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-            Menu
-          </button>
-        </div>
-      </div>
-
-      <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-link" data-scroll="about">About</button>
-        <button class="mobile-link" data-scroll="projects">Projects</button>
-        <button class="mobile-link" data-scroll="classes">Classes</button>
-        <button class="mobile-link" data-scroll="connect">Connect</button>
-      </div>
-    </header>
-
-    <main id="home">
-      <section class="hero section">
-        <div class="hero-copy reveal">
-          <div class="eyebrow">Computer Science · Systems · Software · Engineering</div>
-          <h1>
-            Thanks
-            <span>for checking</span>
-            me out!</span>
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-name">
+        <div class="hero-head">
+          <h1 id="hero-name" class="nameplate">
+            <span>Jake</span>
+            <span>Brecknock</span>
           </h1>
-          <p class="hero-text">
-            Have fun exploring my website - please reach out with any questions! 
+          <p class="hero-lede">
+            Computer science and electrical engineering at Grinnell College.
+            I build software that people use at work every day, and I'm currently
+            writing a mesh VPN in Rust.
           </p>
-
-          <div class="typed-panel">
-            <div class="typed-label">Currently...</div>
-            <div class="typed-line">
-              <span id="typedText"></span><span class="cursor">|</span>
-            </div>
-          </div>
-
-          <div class="hero-buttons">
-            <button class="btn btn-primary" data-scroll="projects">Explore Work</button>
-            <a class="btn btn-secondary" href="resume.pdf" target="_blank" rel="noreferrer">Open Resume</a>
-            <a class="btn btn-secondary" href="Letter of Recommendation (Jake Brecknock).pdf" target="_blank" rel="noreferrer">Recommendations</a>
-          </div>
         </div>
 
-        <div class="hero-panel reveal">
-  <div class="panel-card spotlight-card hero-image-card">
-    <img src="e113519a-fd49-46a6-89f0-af6ef89015a1.jpeg" alt="Jake Brecknock" class="hero-image" />
+        <figure class="portrait">
+          <div class="portrait-img">
+            <img src="jake-27.jpg" alt="Jake Brecknock (#27) with a Grinnell teammate, holding the 2026 Midwest Conference men's soccer tournament winner plaque" width="1600" height="1066" />
+          </div>
+          <figcaption>I'm the one on the right.</figcaption>
+        </figure>
 
-
-    <div class="snapshot-grid">
-      <div class="snapshot-item">Grinnell College</div>
-      <div class="snapshot-item">Computer Science</div>
-      <div class="snapshot-item">3-2 Electrical Engineering</div>
-      <div class="snapshot-item">NCAA Student-Athlete</div>
-      <div class="snapshot-item">Strong liberal arts foundation</div>
-      <div class="snapshot-item">Builder of real-world tools</div>
-    </div>
-  </div>
-</div>
+        <div class="terminal" id="terminal" aria-label="Interactive terminal">
+          <div class="term-bar">
+            <span class="term-title">jake@grinnell: ~</span>
+            <span class="term-tip">type <code>help</code> or tap a command</span>
+          </div>
+          <div class="term-body" id="termBody" role="log" aria-live="polite" tabindex="0"></div>
+          <form class="term-input" id="termForm" autocomplete="off">
+            <label for="termInput" class="prompt"><span class="p-user">jake@grinnell</span>:<span class="p-path">~</span>$</label>
+            <input id="termInput" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command" />
+          </form>
+          <div class="term-quick" aria-label="Quick commands">
+            <button type="button" data-cmd="help">help</button>
+            <button type="button" data-cmd="whoami">whoami</button>
+            <button type="button" data-cmd="projects">projects</button>
+            <button type="button" data-cmd="courses">courses</button>
+            <button type="button" data-cmd="resume">resume</button>
+            <button type="button" data-cmd="contact">contact</button>
+          </div>
+        </div>
       </section>
 
-<!-- ABOUT (UPDATED SPLIT SECTION) -->
-<section id="about" class="section">
-  <div class="section-heading reveal">
-    <div class="section-kicker">About</div>
-    <h2>My background</h2>
-  </div>
+      <div class="hazard" aria-hidden="true"></div>
 
-  <div class="two-col">
-    <!-- LEFT: PROFESSIONAL -->
-    <div class="glass-card spotlight-card reveal">
-      <div class="section-kicker">Professional</div>
-      <h3>How I work</h3>
+      <!-- ABOUT -->
+      <section id="about" class="sec" aria-labelledby="h-about">
+        <header class="sec-head">
+          <span class="sec-path">~/about</span>
+          <h2 id="h-about">About</h2>
+        </header>
 
-      <p>
-        I’m currently pursuing a B.A. in Computer Science at Grinnell College and
-        a B.S. in Electrical Engineering through the 3-2 engineering program. I 
-        aspire to create tech-driven solutions to real world business problems and 
-        optimize systems using AI. 
-      </p>
-
-      <p>
-        A lot of my best work has come from building things people actually use:
-        live estimate software, warehouse tracking systems, and operational tools
-        that improve speed and clarity. I care about product quality, technical
-        depth, and making software feel intuitive.
-      </p>
-
-      <p>
-        I’m drawn to work that blends strong engineering with real-world usefulness —
-        building systems that are not just technically sound, but actually impactful.
-      </p>
-    </div>
-
-    <!-- RIGHT: PERSONAL -->
-    <div class="glass-card spotlight-card reveal">
-      <div class="section-kicker">Personal</div>
-      <h3>Who I am outside of work</h3>
-
-      <p>
-        I’m originally from Chicago and curently split my time between there and Melbourne. 
-        That balance has shaped how I approach both work and life — I value ambition, 
-        strong community, and staying connected to the places that matter most.
-      </p>
-
-      <p>
-        Outside of academics and work, I love reading and I spend a lot of time
-        playing golf on my ongoing quest to break 80.
-      </p>
-
-      <p>
-        I also care deeply about volunteer work. As co-founder of the Grinnell
-        Student Outreach Club, I’ve helped grow a student organization of over
-        100 members focused on strengthening relationships with local communities.
-      </p>
-    </div>
-  </div>
-</section>
-
-      <section id="projects" class="section">
-        <div class="section-heading reveal">
-          <div class="section-kicker">Projects</div>
-          <h2>My work</h2>
-        </div>
-
-        <div class="projects-shell">
-          <div class="project-tabs reveal">
-            <button class="project-tab active" data-project="0">
-              <span class="tab-type">Personal Project</span>
-              <span class="tab-title">Stack Index</span>
-            </button>
-            <button class="project-tab active" data-project="1">
-              <span class="tab-type">Professional Project</span>
-              <span class="tab-title">ACE Live Estimate Platform</span>
-            </button>
-            <button class="project-tab" data-project="2">
-              <span class="tab-type">Professional Project</span>
-              <span class="tab-title">Warehouse Checkout System</span>
-            </button>
-            <button class="project-tab" data-project="3">
-              <span class="tab-type">Professional Experience</span>
-              <span class="tab-title">Tapster Robotics Assembly</span>
-            </button>
-            <button class="project-tab" data-project="4">
-              <span class="tab-type">Leadership / Initiative</span>
-              <span class="tab-title">Grinnell Student Outreach Club</span>
-            </button>
-          </div>
-
-          <div class="project-view glass-card spotlight-card reveal">
-            <div class="project-meta">
-              <span id="projectType">Professional Project</span>
-              <span id="projectYear">2025</span>
-            </div>
-            <h3 id="projectTitle">ACE Live Estimate Platform</h3>
-            <p id="projectDescription">
-              I worked with AI to create and implement a JavaScript website for ACE Handyman Services that
-              produces and stores live estimates for the field manager and craftsmen. This solution is still in 
-              use and unique to ACE Handyman Services. 
+        <div class="about-grid">
+          <div class="prose">
+            <p>
+              I'm pursuing a B.A. in Computer Science at Grinnell College and a B.S. in
+              Electrical Engineering through the 3-2 engineering program. I also play NCAA
+              soccer for Grinnell, receive merit aid, and co-founded the Grinnell Student
+              Outreach Club.
             </p>
+            <p>
+              Most of what I've shipped has been tools for people doing real work: a live
+              estimating site for ACE Handyman's field manager and craftsmen, a check-in/out
+              system for their tools and vehicles, and a site-data page for ADB engineers in
+              St. Louis. I like problems where good software makes someone's day measurably faster.
+            </p>
+            <p>
+              I'm from Chicago and split my time between there and Melbourne. Outside of class and
+              work I read a lot and play golf, still chasing a round under 80.
+            </p>
+          </div>
 
-            <div class="tag-row" id="projectTags"></div>
+          <dl class="spec" aria-label="Datasheet">
+            <div><dt>School</dt><dd>Grinnell College, class of 2027</dd></div>
+            <div><dt>Degrees</dt><dd>B.A. Computer Science<br />B.S. Electrical Engineering (3-2)</dd></div>
+            <div><dt>Athletics</dt><dd>NCAA soccer</dd></div>
+            <div><dt>Based</dt><dd>Chicago, IL / Grinnell, IA</dd></div>
+            <div><dt>High school</dt><dd>Fenwick, Oak Park IL, 2024. Lawless Scholar, National Merit semifinalist, 1500 SAT, 35 ACT</dd></div>
+            <div><dt>Math team</dt><dd>6th in Illinois individually, 1st as a team</dd></div>
+            <div><dt>Also</dt><dd>WYSE (Worldwide Youth in Science and Engineering)</dd></div>
+          </dl>
+        </div>
 
-            <div class="impact-box">
-              <div class="impact-label">Why it matters</div>
-              <p id="projectImpact">
-                This tool created a real competitive differentiator by making estimates
-                faster, easier, and available in real time - something offered by no competitors.
-              </p>
-            </div>
+        <div class="skills">
+          <h3>Skills</h3>
+          <div class="skill-row">
+            <span class="skill-k">Languages &amp; hardware</span>
+            <ul><li>C</li><li>JavaScript</li><li>R</li><li>Rust</li><li>SQL</li><li>Python</li><li>Java</li><li>Circuit design</li><li>Computer architecture</li></ul>
+          </div>
+          <div class="skill-row">
+            <span class="skill-k">Software &amp; frameworks</span>
+            <ul><li>LLM implementation</li><li>AI frameworks</li><li>Git</li><li>Bash</li><li>Excel</li><li>Microsoft Office</li><li>Firebase</li></ul>
+          </div>
+          <div class="skill-row">
+            <span class="skill-k">General</span>
+            <ul><li>Project management</li><li>Organization &amp; time management</li><li>Fast learner</li></ul>
           </div>
         </div>
       </section>
 
-      <section id="classes" class="section">
-        <div class="section-heading reveal">
-          <div class="section-kicker">Classes</div>
-          <h2>CS + STEM coursework</h2>
-        </div>
+      <!-- EXPERIENCE -->
+      <section id="experience" class="sec" aria-labelledby="h-exp">
+        <header class="sec-head">
+          <span class="sec-path">~/experience</span>
+          <h2 id="h-exp">Experience</h2>
+        </header>
 
-        <div class="classes-grid">
-          <article class="class-card glass-card spotlight-card reveal">
-            <div class="class-head">
-              <span>CSC 151</span>
-              <button class="class-toggle">Open</button>
+        <ol class="log">
+          <li class="log-item">
+            <div class="log-when"><time>May 2026</time> – <time>Aug 2026</time></div>
+            <div class="log-what">
+              <h3>Engineering Intern <span class="log-org">ADB Companies, Chicago IL</span></h3>
+              <p class="log-sub">Software / electrical</p>
+              <ul>
+                <li>Went on site visits with State of Illinois licensed electrical engineers for hands-on experience at telecommunication and fiber-optic sites.</li>
+                <li>Reviewed engineering drawings from Verizon, AT&amp;T, and T-Mobile.</li>
+                <li>Cleaned and organized site data on my own using Python and Excel, then built a web page that hosts that data for ADB's St. Louis team.</li>
+              </ul>
             </div>
-            <h3>Functional Problem Solving</h3>
-            <div class="class-body">
-              <p>
-                I worked in Scamper, a Grinnell language derived from Racket. A standout project
-                was a learning rock-paper-scissors model that tracked a user’s past choices,
-                adapted over time, and adjusted its strategy to outperform baseline predictions.
-              </p>
+          </li>
+          <li class="log-item">
+            <div class="log-when"><time>Aug 2025</time> – <time>May 2026</time></div>
+            <div class="log-what">
+              <h3>Residential Assistant <span class="log-org">Grinnell College</span></h3>
+              <ul>
+                <li>Planned, organized, and budgeted events for a 20-person floor.</li>
+                <li>Trained in conflict mediation, supervisor communication, emergency management, and policy enforcement.</li>
+              </ul>
             </div>
-          </article>
+          </li>
+          <li class="log-item">
+            <div class="log-when"><time>May 2025</time> – <time>Aug 2025</time></div>
+            <div class="log-what">
+              <h3>Software Development Intern <span class="log-org">ACE Handyman Services, Chicago IL</span></h3>
+              <ul>
+                <li>Built a JavaScript website that produces and stores estimates for the field manager and craftsmen. None of ACE's competitors offer live time estimates; the site is still in use and sets their estimate process apart. Built with Firebase, JavaScript, CSS, and HTML.</li>
+                <li>Built a second site that lets workers check tools and vehicles in and out.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="log-item">
+            <div class="log-when"><time>Oct 2024</time> – <time>Jan 2025</time></div>
+            <div class="log-what">
+              <h3>Robotics Assembly Team <span class="log-org">Tapster Robotics, Chicago IL</span></h3>
+              <ul>
+                <li>Assembled roughly one hundred robots with a small team, relying on attention to detail, communication, and problem solving for a high-quality product and a quick turnaround.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </section>
 
-          <article class="class-card glass-card spotlight-card reveal">
-            <div class="class-head">
-              <span>CSC 161</span>
-              <button class="class-toggle">Open</button>
-            </div>
-            <h3>Imperative Problem Solving</h3>
-            <div class="class-body">
-              <p>
-                A C-based course centered on imperative programming and structured problem solving.
-                My final project was a polished Snake game that used image-based rendering to create
-                smoother gameplay and a more refined visual experience.
-              </p>
-            </div>
-          </article>
+      <!-- PROJECTS -->
+      <section id="projects" class="sec" aria-labelledby="h-proj">
+        <header class="sec-head">
+          <span class="sec-path">~/projects</span>
+          <h2 id="h-proj">Projects</h2>
+        </header>
 
-          <article class="class-card glass-card spotlight-card reveal">
-            <div class="class-head">
-              <span>CSC 207</span>
-              <button class="class-toggle">Open</button>
-            </div>
-            <h3>Algorithms and Object-Oriented Design</h3>
-            <div class="class-body">
-              <p>
-                A Java-based course focused on object-oriented design, algorithms, and building
-                larger software systems. Notable work included agentic system design that supported
-                more advanced neural-network style behavior and decision-making structures.
-              </p>
-            </div>
-          </article>
-
-          <article class="class-card glass-card spotlight-card reveal">
-            <div class="class-head">
-              <span>CSC 211</span>
-              <button class="class-toggle">Open</button>
-            </div>
-            <h3>Computer Organization and Architecture</h3>
-            <div class="class-body">
-              <p>
-                Focused on low-level assembly programming, machine organization, and digital logic.
-                Major work included assembly code, architectural reasoning, and hands-on circuit work
-                involving registers, ALUs, and other hardware-level concepts.
-              </p>
-            </div>
-          </article>
-
-          <article class="class-card glass-card spotlight-card reveal">
-            <div class="class-head">
-              <span>STA 209</span>
-              <button class="class-toggle">Open</button>
-            </div>
-            <h3>Applied Statistics</h3>
-            <div class="class-body">
-              <p>
-                Worked in R to develop fundamental analysis tools and develop large models of data. 
-                Strengthened my background in statistics and modeling software to be used on a 
-                larger scale. 
-              </p>
-            </div>
-          </article>
-
-          <article class="class-card glass-card spotlight-card reveal">
-            <div class="class-head">
-              <span>MAT 215</span>
-              <button class="class-toggle">Open</button>
-            </div>
-            <h3>Linear Algebra</h3>
-            <div class="class-body">
-              <p>
-                Developed a strong foundation in vector spaces, linear transformations, matrices,
-                eigenvalues, and structured mathematical reasoning. The course strengthened the type
-                of abstract thinking that translates directly into algorithms, systems, and modeling.
-              </p>
-            </div>
-          </article>
-
-          <article class="class-card glass-card spotlight-card reveal">
-            <div class="class-head">
-              <span>PHY 131</span>
-              <button class="class-toggle">Open</button>
-            </div>
-            <h3>Physics I</h3>
-            <div class="class-body">
-              <p>
-                Built a foundation in mechanics, quantitative modeling, and structured physical reasoning.
-                The course emphasized translating real systems into solvable mathematical frameworks and
-                strengthened technical problem-solving under constraints.
-              </p>
-            </div>
-          </article>
-
-          <article class="class-card glass-card spotlight-card reveal">
-            <div class="class-head">
-              <span>PHY 132</span>
-              <button class="class-toggle">Open</button>
-            </div>
-            <h3>Electricity and Magnetism</h3>
-            <div class="class-body">
-              <p>
-                Focused on electric fields, potential, circuits, capacitance, current, and magnetic effects.
-                This course ties directly into my electrical engineering interests by connecting theory with
-                circuit behavior, system analysis, and practical technical intuition.
-              </p>
-            </div>
-          </article>
+        <div class="proc">
+          <div class="proc-list" role="tablist" aria-label="Projects" id="procList"></div>
+          <article class="proc-detail" id="procDetail" role="tabpanel" aria-live="polite"></article>
         </div>
       </section>
 
-      <section id="connect" class="section">
-        <div class="section-heading reveal">
-          <div class="section-kicker">Connect</div>
-          <h2>Links, contact, and resume</h2>
+      <!-- COURSES -->
+      <section id="courses" class="sec" aria-labelledby="h-courses">
+        <header class="sec-head">
+          <span class="sec-path">~/courses</span>
+          <h2 id="h-courses">Coursework</h2>
+        </header>
+
+        <div class="filters" role="group" aria-label="Filter by department" id="courseFilters">
+          <button type="button" data-dept="all" aria-pressed="true">All</button>
+          <button type="button" data-dept="CSC" aria-pressed="false">CSC</button>
+          <button type="button" data-dept="MAT" aria-pressed="false">MAT</button>
+          <button type="button" data-dept="PHY" aria-pressed="false">PHY</button>
+          <button type="button" data-dept="STA" aria-pressed="false">STA</button>
+          <span class="filter-count" id="courseCount"></span>
         </div>
 
-        <div class="connect-grid">
-          <a class="link-card glass-card spotlight-card reveal" href="https://github.com/jakebrecknock" target="_blank" rel="noreferrer">
-            <div class="link-top">
-              <h3>GitHub</h3>
-              <span>↗</span>
-            </div>
-            <p>Code, repositories, experiments, and technical work.</p>
-          </a>
+        <ul class="ls" id="courseList"></ul>
+        <p class="note">Course descriptions for CSC 208, 301, 324, 341 and MAT 220 are adapted from Grinnell College's academic catalog and math department pages.</p>
+      </section>
 
-          <a class="link-card glass-card spotlight-card reveal" href="https://www.linkedin.com/in/jake-brecknock" target="_blank" rel="noreferrer">
-            <div class="link-top">
-              <h3>LinkedIn</h3>
-              <span>↗</span>
-            </div>
-            <p>Experience, background, and professional profile.</p>
-          </a>
+      <!-- RESUME -->
+      <section id="resume" class="sec" aria-labelledby="h-resume">
+        <header class="sec-head">
+          <span class="sec-path">~/resume.pdf</span>
+          <h2 id="h-resume">Resume</h2>
+        </header>
 
-          <a class="link-card glass-card spotlight-card reveal" href="mailto:jakebrecknock@icloud.com">
-            <div class="link-top">
-              <h3>Email</h3>
-              <span>↗</span>
-            </div>
-            <p>jakebrecknock@icloud.com</p>
-          </a>
-
-          <div class="link-card glass-card spotlight-card reveal static-card">
-            <div class="link-top">
-              <h3>Phone</h3>
-              <span>↗</span>
-            </div>
-            <p>(708) 378-3477</p>
+        <div class="resume">
+          <div class="resume-actions">
+            <a class="btn btn-solid" href="resume.pdf" target="_blank" rel="noopener">Open PDF</a>
+            <a class="btn" href="resume.pdf" download="Jake_Brecknock_Resume.pdf">Download</a>
+            <a class="btn" href="Letter%20of%20Recommendation%20(Jake%20Brecknock).pdf" target="_blank" rel="noopener">Letter of recommendation</a>
           </div>
-
-          <a class="link-card glass-card spotlight-card reveal" href="resume.pdf" target="_blank" rel="noreferrer">
-            <div class="link-top">
-              <h3>Open Resume</h3>
-              <span>↗</span>
-            </div>
-            <p>View the PDF directly in a new tab.</p>
-          </a>
+          <div class="resume-view">
+            <object data="resume.pdf#view=FitH&amp;toolbar=0" type="application/pdf" aria-label="Resume PDF">
+              <p class="resume-fallback">Your browser can't show the PDF inline. <a href="resume.pdf" target="_blank" rel="noopener">Open the resume</a> instead.</p>
+            </object>
+          </div>
         </div>
       </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="sec" aria-labelledby="h-contact">
+        <header class="sec-head">
+          <span class="sec-path">~/contact</span>
+          <h2 id="h-contact">Contact</h2>
+        </header>
+
+        <ul class="ports">
+          <li>
+            <span class="port-k">Email</span>
+            <a href="mailto:jakebrecknock@icloud.com">jakebrecknock@icloud.com</a>
+            <button type="button" class="copy" data-copy="jakebrecknock@icloud.com">Copy</button>
+          </li>
+          <li>
+            <span class="port-k">Phone</span>
+            <a href="tel:+17083783477">(708) 378-3477</a>
+            <button type="button" class="copy" data-copy="(708) 378-3477">Copy</button>
+          </li>
+          <li>
+            <span class="port-k">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/jake-brecknock" target="_blank" rel="noopener">linkedin.com/in/jake-brecknock</a>
+          </li>
+          <li>
+            <span class="port-k">GitHub</span>
+            <a href="https://github.com/jakebrecknock" target="_blank" rel="noopener">github.com/jakebrecknock</a>
+          </li>
+        </ul>
+      </section>
+
+      <footer class="foot">
+        <span>jakebrecknock.com</span>
+        <span>Hand-built HTML, CSS, and JavaScript. Hosted on GitHub Pages.</span>
+      </footer>
     </main>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
 </html>
